@@ -1,0 +1,46 @@
+<div class="jumbotron">
+  <h1 class="display-4"><strong>BURGER LOGGER</strong></h1>
+  <p class="lead">Log burgers you want to eat and devour when complete!</p>
+  <hr class="my-4">
+</div>
+
+
+<ul>
+    {{#each burger}}
+    {{#unless devoured}}
+    <li>
+        <p><span class="label">ID:</span> {{id}}</p>
+        <p><span class="label">BURGER:</span> {{burger_name}}</p>
+        <p><span class="label">DEVOURED:</span> {{devoured}}</p>
+        <button id="devour" data-id="{{id}}" data-newdevoured={{devoured}}>DEVOUR</button>
+        <button class="delete" data-id="{{this.id}}">DELETE</button>
+    </li>
+    {{/unless}}
+    {{/each}}
+</ul>
+
+<ul>
+    {{#each burger}}
+    {{#if devoured}}
+    <li>
+        <p><span class="label">ID:</span> {{id}}</p>
+        <p><span class="label">BURGER:</span> {{burger_name}}</p>
+        <p><span class="label">DEVOURED:</span> {{devoured}}</p>
+        <button class="delete" data-id="{{this.id}}">DELETE</button>
+    </li>
+    {{/if}}
+    {{/each}}
+</ul>
+
+
+<h2>Log a new burger!</h2>
+
+<form class="create-form" id="burger-form">
+
+    <div class="form-group">
+        <label for="burger">BURGER:</label>
+        <input type="text" name="burger" id="burger">
+    </div>
+    
+    <button data-id="{{burger_name}}" type="submit">LOG BURGER</button>
+</form>
